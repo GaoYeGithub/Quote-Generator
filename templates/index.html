@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/blocks.css/dist/blocks.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Kanye Quotes</title>
+</head>
+
+<body class="rainbow-gradient">
+  <div class="head">
+    <h1>Kanye Generator</h1>
+  </div>
+  <div class="quote block">
+    <h3 id="quote">{{ quote }}</h3>
+  </div>
+  <div class="joke block">
+    <h3 id="joke">{{ joke }}</h3>
+  </div>
+  <div class="advice block">
+    <h3 id="advice">{{ advice }}</h3>
+  </div>
+  <div class="trivia block">
+    <h3 id="trivia">{{ trivia }}</h3>
+  </div>
+  <div class="user-quote block">
+    <h3 id="user-quote">{{ user_quote }}</h3>
+  </div>
+  <button onclick="fetchNewData()" class="block refresh">Get New Data</button>
+  <button onclick="toggleDarkMode()" class="block refresh">Toggle Dark Mode</button>
+  <form action="/submit_quote" method="POST" class="block">
+    <input type="text" name="user_quote" placeholder="Enter your quote" required>
+    <button type="submit" class="refresh">Submit Quote</button>
+  </form>
+  <button onclick="saveFavorite()" class="block refresh">Save Favorite Quote</button>
+
+  <script>
+    function fetchNewData() {
+      fetch('/api/data')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('quote').innerText = data.quote;
+          document.getElementById('joke').innerText = data.joke;
+          document.getElementById('advice').innerText = data.advice;
+          document.getElementById('trivia').innerText = data.trivia;
+        });
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    function saveFavorite() {
+      const quote = document.getElementById('quote').innerText;
+      localStorage.setItem('favoriteQuote', quote);
+      alert('Favorite quote saved!');
+    }
+  </script>
+</body>
+
+</html>

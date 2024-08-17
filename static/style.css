@@ -1,0 +1,103 @@
+.rainbow-gradient {
+  background: linear-gradient(124deg,
+  #ff2400,
+  #e81d1d,
+  #d6a811,
+  #ced114,
+  #1de840,
+  #1ddde8,
+  #2b1de8,
+  #dd00f3,
+  #dd00f3);
+  background-size: 1800% 1800%;
+  animation: rainbow-gradient 18s ease infinite;
+}
+
+@keyframes rainbow-gradient {
+  0% {
+    background-position: 0% 82%;
+  }
+  50% {
+    background-position: 100% 19%;
+  }
+  100% {
+    background-position: 0% 82%;
+  }
+}
+
+.head {
+  margin: 0 auto;
+  width: 60%;
+  text-align: center;
+}
+
+h1 {
+  color: black;
+  text-align: center;
+  font-size: 3em;
+  margin-top: 1em;
+}
+
+.block {
+  text-align: center;
+  font-size: 2em;
+  margin: 0 auto;
+  margin-top: 2em;
+  padding: 1em;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.refresh {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.5em;
+  width: 12em;
+  margin: 2em auto;
+  padding: 1em 2em;
+  background-color: #ff2400;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.refresh:hover {
+  background-color: #fff;
+  color: #ff2400;
+  border: 2px solid #ff2400;
+  transform: scale(1.05);
+}
+
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-mode .block {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.dark-mode .refresh {
+  background-color: #fff;
+  color: #333;
+  border: 2px solid #fff;
+}
+
+.dark-mode .refresh:hover {
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #333;
+}
+
+body {
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  color: #000000;
+
+body.dark-mode {
+  background-color: #121212; 
+  color: #ffffff;
+}
